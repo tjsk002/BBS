@@ -137,7 +137,7 @@ a, a:hover {
 					<%= bbs.getBbsContent().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>;") %>
 					
 					
-					
+					test
 					</td>
 
 				</tr>
