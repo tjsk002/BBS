@@ -135,9 +135,7 @@ a, a:hover {
 					<td>내용</td>
 					<td colspan="2" style="min-hight: 200px; text-align: left;">
 					<%= bbs.getBbsContent().replaceAll(" ","&nbsp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>;") %>
-					
-					
-					test
+
 					</td>
 
 				</tr>

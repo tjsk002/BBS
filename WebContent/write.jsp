@@ -84,12 +84,17 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" class="form-control"
-								placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+							<td>
+								<input type="text" class="form-control"
+								placeholder="글 제목" name="bbsTitle" maxlength="50">
+							</td>
 						</tr>
 						<tr>
-							<td><textarea class="form-control" placeholder="글 내용"
-									name="bbsContent" maxlength="2048" style="height: 350px;"></textarea>
+							<td>
+							<textarea class="form-control" placeholder="글 내용"
+									name="bbsContent" maxlength="2048" style="height: 350px;">
+							</textarea>
+							</td>
 						</tr>
 					</tbody>
 				</table>

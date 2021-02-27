@@ -58,6 +58,8 @@ public class BbsDAO {
 		}
 		return -1; // 데이터 베이스 오류
 	}
+	
+	
 
 	public int write(String bbsTitle, String userID, String bbsContent) {
 		String SQL = "INSERT INTO BBS VALUES (?, ?, ?, ?, ?, ?)";
@@ -171,4 +173,20 @@ public class BbsDAO {
 				return null;
 	}
 
+	public int update(int bbsID, String bbsTitle, String bbsContent) {
+		String SQL = "UPDATE BBS SET bbsTtitle = ?, bbsContent = ? WHERE bbsID = ?";
+		try {
+			
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			
+			pstmt.setString(1, bbsTitle);
+			pstmt.setString(2, bbsTitle);
+			pstmt.setInt(3, bbsID);
+			return pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 }
