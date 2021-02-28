@@ -19,6 +19,7 @@
 		if(session.getAttribute("userID") != null){
 			userID = (String) session.getAttribute("userID");
 		}
+		
 		if(userID == null){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -28,13 +29,9 @@
 		}
 		
 		int bbsID = 0;
-
-		bbsID = Integer.parseInt(request.getParameter("bbsID"));
 		
 		if (request.getParameter("pageID") != null) {
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
-
-			System.out.println("bbsID::: " + bbsID);
 
 		}
 
@@ -74,7 +71,6 @@
 				<li class="active"><a href="bbs.jsp">게시판</a></li>
 			</ul>
 		
-			
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -84,16 +80,13 @@
 					</ul>
 				</li>
 			</ul>
-			
-			
-
 		</div>
 	</nav>
 	
 	<div class="container">
 		<div class="row">
 		<%//post 우체국비밀이라고 생각하셈 %>
-			<from method="post" action="updateAction.jsp?bbsID=<%=bbsID %>">
+			<form method="post" action="updateAction.jsp?bbsID=<%=bbsID %>">
 				<table class="table tavle-striped" style="text-align:center; border:1px solid #dddddd">
 					<thead>
 						<tr>
@@ -106,12 +99,12 @@
 						
 						</tr>
 						<tr>
-							<td><textarea class="form-control" placeholder="글 내용" name="bbaContent" maxlength="2048" style="height:350px" <%= bbs.getBbsContent()%>></textarea></td>
+							<td><textarea class="form-control" placeholder="글 내용" name="bbaContent" maxlength="2048" style="height:350px;"><%= bbs.getBbsContent()%></textarea></td>
 						</tr>
 					</thead>
 				</table>
-				<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
-			</from>
+				<input type="submit" class="btn btn-primary pull-right" value="글수정">
+			</form>
 		</div>
 	</div>
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
