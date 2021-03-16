@@ -47,12 +47,18 @@
 			script.println("location.href='login.jsp'");
 			script.println("</script>");
 		} else {
-			if (bbs.getBbsTitle() == null || bbs.getBbsContent() == null){
+			if (request.getParameter("bbsTitle") == null || request.getParameter("bbeContent") == null
+		|| request.getParameter("bbsTitle").equals("") || request.getParameter("bbeContent").equals("")){
+				
+				//null값이거나 "" 빈틈이 하나라도 있으면 입력이 안된 사항이 있습니다. 출력
+				
 				PrintWriter script = response.getWriter();
+				
 				script.println("<script>");
 				script.println("alert('입력이 안 된 사항이 있습니다')");
 				script.println("history.back()");
 				script.println("</script>");
+				
 			}else{
 				BbsDAO bbsDAO = new BbsDAO();
 				int result = bbsDAO.write(bbs.getBbsTitle(), userID, bbs.getBbsContent());
