@@ -20,7 +20,7 @@
 			userID = (String) session.getAttribute("userID");
 		}
 		
-		if(userID == null){
+		if(userID == null){//로그아웃상태
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('로그인을 하세요.')");
@@ -29,26 +29,29 @@
 		}
 		
 		int bbsID = 0;
+		//존재하는 글
 		
-		if (request.getParameter("pageID") != null) {
+		if (request.getParameter("bbsID") != null) {
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
 
 		}
 
 		if (bbsID == 0) {
+			//존재하지 않는 글
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('유효하지 않은 글입니다.')");
-			script.println("location.href='login.jsp'");
+			script.println("location.href='bbs.jsp'");
 			script.println("</script>");
 		}
 
 		Bbs bbs = new BbsDAO().getBbs(bbsID);
 		if(!userID.equals(bbs.getUserID())){
+			//접속자와 작성자가 다르다면
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('권한이 없습니다')");
-			script.println("location.href='login.jsp'");
+			script.println("location.href='bbs.jsp'");
 			script.println("</script>");
 		}
 	%>
@@ -87,7 +90,7 @@
 		<div class="row">
 		<%//post 우체국비밀이라고 생각하셈 %>
 			<form method="post" action="updateAction.jsp?bbsID=<%=bbsID %>">
-				<table class="table tavle-striped" style="text-align:center; border:1px solid #dddddd">
+				<table class="table table-striped" style="text-align:center; border:1px solid #dddddd">
 					<thead>
 						<tr>
 							<th colspan="2" style="background-color:#eeeeee; text-align:center;">게시판 글 수정 양식</th>
