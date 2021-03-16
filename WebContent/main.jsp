@@ -58,7 +58,8 @@
 					<ul class="dropdown-menu">
 						<li><a href="logoutAction.jsp">로그아웃</a></li>
 
-					</ul></li>
+					</ul>
+				</li>
 			</ul>
 			<%
 				}

@@ -29,7 +29,7 @@
 		int bbsID = 0;
 			//존재하는글 
 		
-		if (request.getParameter("pageID") != null) {
+		if (request.getParameter("bbsID") != null) {
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
 
 		}
@@ -44,6 +44,7 @@
 		}
 
 		Bbs bbs = new BbsDAO().getBbs(bbsID);
+		
 		if(!userID.equals(bbs.getUserID())){
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
@@ -51,8 +52,8 @@
 			script.println("location.href='login.jsp'");
 			script.println("</script>");
 		} else {
-			if (request.getParameter("bbsTitle") == null || request.getParameter("bbeContent") == null
-		|| request.getParameter("bbsTitle").equals("") || request.getParameter("bbeContent").equals("")){
+			if (request.getParameter("bbsTitle") == null || request.getParameter("bbeContent") == null ||
+					request.getParameter("bbsTitle").equals("") || request.getParameter("bbeContent").equals("")){
 				
 				//null값이거나 "" 빈틈이 하나라도 있으면 입력이 안된 사항이 있습니다. 출력
 				
