@@ -52,30 +52,27 @@
 			script.println("location.href='login.jsp'");
 			script.println("</script>");
 		} else {
-			if (request.getParameter("bbsTitle") == null || request.getParameter("bbeContent") == null ||
-					request.getParameter("bbsTitle").equals("") || request.getParameter("bbeContent").equals("")){
+			if (request.getParameter("bbsTitle") == null || request.getParameter("bbsContent") == null
+		|| request.getParameter("bbsTitle").equals("") || request.getParameter("bbsContent").equals("")){
 				
 				//null값이거나 "" 빈틈이 하나라도 있으면 입력이 안된 사항이 있습니다. 출력
 				
 				PrintWriter script = response.getWriter();
-				
 				script.println("<script>");
 				script.println("alert('입력이 안 된 사항이 있습니다')");
 				script.println("history.back()");
 				script.println("</script>");
 				
 			}else{
-				BbsDAO bbsDAO = new BbsDAO();
-				//공란 없으면 게시글 수정
+				BbsDAO bbsDAO = new BbsDAO(); // 공란 없음 -> 게시글 수정
 				int result = bbsDAO.update(bbsID, request.getParameter("bbsTitle"), request.getParameter("bbsContent"));
-				
-				if(result == -1){
-					//데이터 베이스 오류
+				if (result == -1) { // 데이터베이스 오류
 					PrintWriter script = response.getWriter();
 					script.println("<script>");
-					script.println("alert('글수정에 실패하였습니다')");
+					script.println("alert('게시글 수정에 실패했습니다.')");
 					script.println("history.back()");
 					script.println("</script>");
+					
 				}else{
 					PrintWriter script = response.getWriter();
 					script.println("<script>");

@@ -174,7 +174,7 @@ public class BbsDAO {
 	}
 
 	public int update(int bbsID, String bbsTitle, String bbsContent) {
-		String SQL = "UPDATE BBS SET bbsTtitle = ?, bbsContent = ? WHERE bbsID = ?";
+		String SQL = "UPDATE BBS SET bbsTitle = ?, bbsContent = ? WHERE bbsID = ?";
 		try {
 			
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
