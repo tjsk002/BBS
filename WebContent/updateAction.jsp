@@ -24,7 +24,10 @@
 			script.println("location.href='login.jsp'");
 			script.println("</script>");
 			
-		} int bbsID = 0;
+		}
+		
+		int bbsID = 0;
+			//존재하는글 
 		
 		if (request.getParameter("pageID") != null) {
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
@@ -32,6 +35,7 @@
 		}
 
 		if (bbsID == 0) {
+			// 존재하지 않는 글
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('유효하지 않은 글입니다.')");
@@ -61,8 +65,22 @@
 				
 			}else{
 				BbsDAO bbsDAO = new BbsDAO();
-				int result = bbsDAO.write(bbs.getBbsTitle(), userID, bbs.getBbsContent());
+				//공란 없으면 게시글 수정
+				int result = bbsDAO.update(bbsID, request.getParameter("bbsTitle"), request.getParameter("bbsContent"));
 				
+				if(result == -1){
+					//데이터 베이스 오류
+					PrintWriter script = response.getWriter();
+					script.println("<script>");
+					script.println("alert('글수정에 실패하였습니다')");
+					script.println("history.back()");
+					script.println("</script>");
+				}else{
+					PrintWriter script = response.getWriter();
+					script.println("<script>");
+					script.println("location.href = 'bbs.jsp'");
+					script.println("</script>");
+				}
 			}
 		}
 		
