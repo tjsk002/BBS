@@ -180,8 +180,23 @@ public class BbsDAO {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			
 			pstmt.setString(1, bbsTitle);
-			pstmt.setString(2, bbsTitle);
+			pstmt.setString(2, bbsContent);
 			pstmt.setInt(3, bbsID);
+			return pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public int delete(int bbsID) {
+		String SQL = "UPDATE BBS SET bbsAvaiable = 0 where bbsID = ?";
+		try {
+			
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			
+			pstmt.setInt(1, bbsID);
 			return pstmt.executeUpdate();
 			
 		}catch(Exception e) {
