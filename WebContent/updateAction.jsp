@@ -4,6 +4,8 @@
 <%@ page import="bbs.Bbs"%>
 <%@ page import="bbs.BbsDAO"%>
 <% request.setCharacterEncoding("UTF-8");%>
+<% request.setCharacterEncoding("euc-kr"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
