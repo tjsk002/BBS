@@ -150,7 +150,8 @@ a, a:hover {
 		%>
 
 		<a href="update.jsp?bbsID=<%=bbsID%>" class="btn btn-parimay">수정</a>
-		<a href="deleteAction.jsp?bbsID=<%=bbsID%>" class="btn btn-parimay">삭제</a>
+		<%//정말로 삭제하시겠습니까? 만들어주기 %>
+		<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?bbsID=<%=bbsID%>" class="btn btn-parimay">삭제</a>
 			
 		<%
 			}
