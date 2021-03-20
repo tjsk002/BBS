@@ -191,7 +191,7 @@ public class BbsDAO {
 	}
 	
 	public int delete(int bbsID) {
-		String SQL = "UPDATE BBS SET bbsAvaiable = 0 where bbsID = ?";
+		String SQL = "UPDATE BBS SET bbsAvailable = 0 where bbsID = ?";
 		try {
 			
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
